@@ -9,23 +9,31 @@ When examining a patent application with amino-acid sequence, 3-char amino-acid 
 
 # How To Use
 1. Use with python.
+
     1) pre-requirement
         - python interpreter
         - chardet package 
         ```bash
         pip install chardet
         ```
+
     2) how to use
     ```bash
     python amino-translator.py seq1.txt seq2.txt ...
     ```
+    
+    3) result
+        seq1_trsld.txt, seq2_trsld.txt, ...
 
 2. Use as executable file(exe file).
     1) pre-requirement
         - prepare both executable file(amino_translator.exe) and amino-sequence files to be translated(seq1.txt, seq2.txt, ...).
         - the executable file has already been made through 'pyinstaller' package and is provided with python-code.
+
     2) how to use
         - put the amino-sequence files into the same directory where the executable file is.
         - execute the executable file.
         - then, it will translate and create new tranlated files.
-
+    
+    3) result
+        eq1_trsld.txt, seq2_trsld.txt, ...

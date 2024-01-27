@@ -63,17 +63,17 @@ if __name__ == '__main__':
         exit()
 
     if not filenames:
-        filenames = [each for each in os.listdir() if each.endswith('.txt') and not each.endswith('_cvtd.txt')]
+        filenames = [each for each in os.listdir() if each.endswith('.txt') and not each.endswith('_trsld.txt')]
         if not filenames:
             print("<Error-Notice> :: No target files in the current directory.")
             exit()
     
     for filename in filenames:
         if not filename.endswith('.txt'): continue
-        if filename.endswith('_cvtd.txt'): continue
+        if filename.endswith('_trsld.txt'): continue
         text = read_file(filename)
         text = translate_3_to_1(text)
-        new_filename = f"{filename.split('.')[0]}_cvtd.{filename.split('.')[1]}"
+        new_filename = f"{filename.split('.')[0]}_trsld.{filename.split('.')[1]}"
         write_file(new_filename, text)
         print(f"<Process-Notice> :: The file '{filename}' has been tranlated into 1-char amino-acid sequence.")
         print(f"\t\t    New file '{new_filename}' has been created.")
