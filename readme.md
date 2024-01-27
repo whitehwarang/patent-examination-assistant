@@ -8,7 +8,7 @@ When examining a patent application with amino-acid sequence, 3-char amino-acid 
 
 
 # How To Use
-1. Use with python.
+1. Use python.
 
     1) pre-requirement
         - python interpreter
@@ -25,7 +25,8 @@ When examining a patent application with amino-acid sequence, 3-char amino-acid 
     3) result
         - seq1_trsld.txt, seq2_trsld.txt, ...
 
-2. Use as executable file(exe file).
+
+2. Use executable file(exe file).
     1) pre-requirement
         - prepare both executable file(amino_translator.exe) and amino-sequence files to be translated(seq1.txt, seq2.txt, ...).
         - the executable file has already been made through 'pyinstaller' package and is provided with python-code.
