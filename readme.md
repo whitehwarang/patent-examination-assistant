@@ -18,12 +18,12 @@ When examining a patent application with amino-acid sequence, 3-char amino-acid 
         ```
 
     2) how to use
-    ```bash
-    python amino-translator.py seq1.txt seq2.txt ...
-    ```
+        ```bash
+        python amino-translator.py seq1.txt seq2.txt ...
+        ```
     
     3) result
-        seq1_trsld.txt, seq2_trsld.txt, ...
+        - seq1_trsld.txt, seq2_trsld.txt, ...
 
 2. Use as executable file(exe file).
     1) pre-requirement
@@ -36,4 +36,4 @@ When examining a patent application with amino-acid sequence, 3-char amino-acid 
         - then, it will translate and create new tranlated files.
     
     3) result
-        eq1_trsld.txt, seq2_trsld.txt, ...
+        - eq1_trsld.txt, seq2_trsld.txt, ...
