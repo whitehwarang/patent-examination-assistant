@@ -12,7 +12,7 @@ mapper_31 = {
     'Ser' : 'S',    "Thr" : 'T',
     'Asn' : 'N',    'Gln' : 'Q',
 
-    'Sys' : 'C',    'Sec' : 'U',
+    'Cys' : 'C',    'Sec' : 'U',
     "Gly" : 'G',    'Pro' : 'P',
     
     "Ala" : 'A',    "Val" : 'V',
@@ -26,13 +26,13 @@ mapper_13 = {v: k for k, v in mapper_31.items()}
 def translate_3_to_1(amino_text):
     """Tranlate 3-char amino-acid expression text into 1-char one."""
     aminos = amino_text.split()
-    aminos = [mapper_31.get(amino, amino) for amino in aminos]
+    aminos = [mapper_31.get(amino, amino) for amino in aminos if not amino.startswith('<') and amino.endswith('>')]
     return "".join(aminos)
 
 
 def translate_1_to_3(amino_text):
     """Tranlate 1-char amino-acid expression text into 3-char one."""
-    aminos = [mapper_13.get(amino, amino) for amino in amino_text]
+    aminos = [mapper_13.get(amino, amino) for amino in amino_text if not amino.startswith('<') and amino.endswith('>')]
     return " ".join(aminos)
 
 
@@ -47,9 +47,9 @@ def read_file(filepath):
     return text
 
 
-def write_file(filepath, text):
+def write_file(filepath, text, encoding='utf8'):
     """Write text on an amino-acid sequence file."""
-    with open(filepath, mode='w') as fw:
+    with open(filepath, encoding=encoding, mode='w') as fw:
         fw.write(text)
     return 
 
