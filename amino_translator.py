@@ -1,7 +1,9 @@
 import os
 import sys
+import re
 import chardet
 
+space_number_pat = re.compile("[0-9 ]+")
 
 ### A map between 3-char amino-acid expressions and 1-char amino-acid expressions.
 mapper_31 = {
@@ -25,14 +27,23 @@ mapper_13 = {v: k for k, v in mapper_31.items()}
 
 def translate_3_to_1(amino_text):
     """Tranlate 3-char amino-acid expression text into 1-char one."""
-    aminos = amino_text.split()
-    aminos = [mapper_31.get(amino, amino) for amino in aminos if not amino.startswith('<') and amino.endswith('>')]
-    return "".join(aminos)
+    #for char3, char1 in mapper_31.items():
+    #    amino_text.replace(char3, char1)
+    res = []
+    for line in amino_text:
+        if space_number_pat.match(line):
+            continue
+        aminos = line.split()
+        aminos = [mapper_31.get(amino, amino) for amino in aminos if not (amino.startswith('<') and amino.endswith('>')) ]
+        res.append("".join(aminos))
+    return "\n".join(res)
+    #aminos = [mapper_31.get(amino, amino) for amino in aminos if not (amino.startswith('<') and amino.endswith('>')) ]
+    #return "".join(aminos)
 
 
 def translate_1_to_3(amino_text):
     """Tranlate 1-char amino-acid expression text into 3-char one."""
-    aminos = [mapper_13.get(amino, amino) for amino in amino_text if not amino.startswith('<') and amino.endswith('>')]
+    aminos = [mapper_13.get(amino, amino) for amino in amino_text if not (amino.startswith('<') and amino.endswith('>')) ]
     return " ".join(aminos)
 
 
@@ -43,7 +54,8 @@ def read_file(filepath):
     result = chardet.detect(rawdata)
     encoding = result['encoding']
     with open(filepath, mode='r', encoding=encoding) as fr:
-        text = fr.read()
+        #text = fr.read()
+        text = fr.readlines()
     return text
 
 
